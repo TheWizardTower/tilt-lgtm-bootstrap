@@ -17,9 +17,9 @@ ENABLE_DNS = cfg.get('enable-dns', False)
 allow_k8s_contexts(k8s_context())
 
 print("🚀 LGTM Stack Deployment")
-print(f"   Domain: *.{DOMAIN}")
-print(f"   TLS: {'Enabled' if ENABLE_TLS else 'Disabled'}")
-print(f"   External DNS: {'Enabled' if ENABLE_DNS else 'Disabled'}")
+print("   Domain: *.{dmn}".format(dmn=DOMAIN))
+print("   TLS: {tls}".format(tls=ENABLE_TLS))
+print("   External DNS: {dns}".format(dns=ENABLE_DNS))
 print("")
 
 # Helm repositories
