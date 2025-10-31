@@ -42,7 +42,7 @@ helm_repo(
 )
 
 helm_repo(
-    name='ingress-nginx',
+    name='ingress-nginx-repo',
     url='https://kubernetes.github.io/ingress-nginx',
     labels=['helm-repo'],
 )
@@ -84,7 +84,7 @@ if ENABLE_TLS:
 # Ingress controller
 helm_resource(
     name='ingress-nginx',
-    chart='ingress-nginx/ingress-nginx',
+    chart='ingress-nginx-repo/ingress-nginx',
     namespace='ingress-nginx',
     flags=[
         '--create-namespace',
