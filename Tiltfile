@@ -91,7 +91,7 @@ helm_resource(
         '--set', 'controller.hostNetwork=true',
         '--set', 'controller.kind=DaemonSet',
     ],
-    resource_deps=['ingress-nginx'],
+    resource_deps=['ingress-nginx-repo'],
     labels=['infra', 'ingress'],
 )
 
