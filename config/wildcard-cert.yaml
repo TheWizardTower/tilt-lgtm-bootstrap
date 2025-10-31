@@ -1,0 +1,49 @@
+---
+# Wildcard certificate for *.home.lab
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-home-lab
+  namespace: cert-manager
+spec:
+  secretName: wildcard-home-lab-tls
+  issuerRef:
+    name: home-lab-ca-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
+
+  # Wildcard and apex domain
+  dnsNames:
+    - "*.home.lab"
+    - "home.lab"
+
+  # Certificate duration and renewal
+  duration: 2160h # 90 days
+  renewBefore: 360h # Renew 15 days before expiry
+
+  # Private key configuration
+  privateKey:
+    algorithm: RSA
+    size: 2048
+    rotationPolicy: Always
+
+  # Subject information
+  subject:
+    organizations:
+      - "Home Lab"
+    organizationalUnits:
+      - "LGTM Stack"
+
+  # Key usages
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+
+  # ACME configuration (not used with CA issuer, but good to have)
+  # If you switch to Let's Encrypt later, uncomment:
+  # issuerRef:
+  #   name: letsencrypt-prod
+  #   kind: ClusterIssuer
+  # dnsNames:
+  #   - "*.home.lab"
