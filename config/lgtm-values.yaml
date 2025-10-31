@@ -1,0 +1,22 @@
+# Minimal LGTM configuration for quickstart
+loki:
+  replicas: 1
+  storage:
+    size: 10Gi
+
+mimir:
+  replicas: 1
+  storage:
+    size: 10Gi
+
+tempo:
+  replicas: 1
+  storage:
+    size: 10Gi
+
+grafana:
+  enabled: true
+  adminPassword: admin # Change on first login
+  persistence:
+    enabled: true
+    size: 10Gi
